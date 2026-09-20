@@ -90,7 +90,10 @@ func (s *Store) migrate() error {
 			return fmt.Errorf("migrate: %w\n%s", err, q)
 		}
 	}
-	return nil
+	if err := s.migrateActivity(); err != nil {
+		return err
+	}
+	return s.migrateTasks()
 }
 
 // Filter narrows List and Search.

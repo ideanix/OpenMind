@@ -9,6 +9,7 @@ import (
 	"log/slog"
 	"net/http"
 	"os"
+	"os/exec"
 	"os/signal"
 	"path/filepath"
 	"strings"
@@ -17,6 +18,7 @@ import (
 
 	"github.com/modelcontextprotocol/go-sdk/mcp"
 
+	"github.com/ideanix/openmind/internal/auth"
 	"github.com/ideanix/openmind/internal/client"
 	"github.com/ideanix/openmind/internal/digest"
 	"github.com/ideanix/openmind/internal/httpapi"
@@ -30,8 +32,9 @@ var version = "dev"
 const usage = `openmind — shared memory for AI coding agents
 
 Server:
-  openmind serve   [--addr :7777] [--db PATH] [--tokens name:secret,...]
-  openmind mcp     [--db PATH] [--author NAME]        MCP over stdio, local database
+  openmind serve   [--addr :7777] [--db PATH] [--tokens name:secret:proj1|proj2,...]
+  openmind mcp     [--db PATH] [--author NAME] [--project P]   MCP over stdio, pinned to the
+                   project of the current directory (git remote name or folder name)
 
 Notes (local --db or remote --server URL --token T):
   openmind put     --project P --title T [--type ..] [--scope ..] [--tags a,b] (body from stdin or --body)
@@ -45,8 +48,21 @@ Import / export:
   openmind import claude-code --project P [--dir ~/.claude/projects/<x>/memory]
   openmind export claude-md   --project P [--out CLAUDE.md]
 
+Sharing on a network:
+  openmind token add NAME --projects a,b|team/*|*      create a token (secret shown once)
+  openmind token list | revoke NAME
+  openmind invite NAME --projects a,b                  token + ready-to-paste steps for another device
+  openmind service install|uninstall|status            run the server in the background (launchd)
+
+Control desk and agent work:
+  openmind ui                                          open the control desk in the browser
+  openmind task add --project P --to CLIENT "prompt"   queue a task for a client machine
+  openmind task list | show ID | cancel ID | requeue ID
+  openmind worker --server URL --token T --dir PATH    on the client: run queued tasks with Claude Code
+
 Setup:
-  openmind setup claude-code  --server URL --token T          prints the claude mcp add command
+  openmind setup claude-code  [--server URL --token T] [--project P | --namespace TEAM]
+                   prints a claude mcp add command scoped to this repository
 
 Environment: OPENMIND_DB, OPENMIND_SERVER, OPENMIND_TOKEN, OPENMIND_TOKENS, OPENMIND_AUTHOR
 `
@@ -57,6 +73,7 @@ func main() {
 		os.Exit(2)
 	}
 	mcpserver.Version = version
+	httpapi.Version = version
 	var err error
 	switch os.Args[1] {
 	case "serve":
@@ -81,6 +98,18 @@ func main() {
 		err = cmdExport(os.Args[2:])
 	case "setup":
 		err = cmdSetup(os.Args[2:])
+	case "token":
+		err = cmdToken(os.Args[2:])
+	case "invite":
+		err = cmdInvite(os.Args[2:])
+	case "service":
+		err = cmdService(os.Args[2:])
+	case "worker":
+		err = cmdWorker(os.Args[2:])
+	case "task":
+		err = cmdTask(os.Args[2:])
+	case "ui":
+		err = cmdUI(os.Args[2:])
 	case "version", "--version", "-v":
 		fmt.Println("openmind", version)
 	case "help", "-h", "--help":
@@ -122,6 +151,7 @@ func (l localBackend) Put(ctx context.Context, n *note.Note) (*note.Note, error)
 func (l localBackend) Get(ctx context.Context, id string) (*note.Note, error) {
 	return l.st.Get(ctx, id, l.author)
 }
+
 func (l localBackend) List(ctx context.Context, f store.Filter) ([]*note.Note, error) {
 	f.Viewer = l.author
 	return l.st.List(ctx, f)
@@ -196,14 +226,20 @@ func env(k, def string) string {
 
 func cmdServe(args []string) error {
 	fs := flag.NewFlagSet("serve", flag.ExitOnError)
-	addr := fs.String("addr", env("OPENMIND_ADDR", ":7777"), "listen address")
+	addr := fs.String("addr", env("OPENMIND_ADDR", "127.0.0.1:7777"), "listen address; use :7777 to share on the network (requires tokens)")
 	db := fs.String("db", env("OPENMIND_DB", defaultDB()), "SQLite database path")
-	tokens := fs.String("tokens", os.Getenv("OPENMIND_TOKENS"), "comma-separated name:secret pairs; empty disables auth")
+	tokens := fs.String("tokens", os.Getenv("OPENMIND_TOKENS"), "static name:secret:proj1|proj2 entries, merged with the token file")
+	tokenFile := fs.String("token-file", env("OPENMIND_TOKEN_FILE", defaultTokenFile()), "token store managed by `openmind token`")
 	fs.Parse(args)
 
-	tk, err := parseTokens(*tokens)
+	static, err := auth.ParseTokens(*tokens)
 	if err != nil {
 		return err
+	}
+	tk := auth.NewFile(*tokenFile, static)
+	exposed := !isLoopback(*addr)
+	if exposed && !tk.Enabled() {
+		return fmt.Errorf("refusing to listen on %s without tokens: anyone on the network could read every project.\nCreate one with `openmind token add <you> --projects '*'`, or listen on 127.0.0.1", *addr)
 	}
 	st, err := openStore(*db)
 	if err != nil {
@@ -211,10 +247,10 @@ func cmdServe(args []string) error {
 	}
 	defer st.Close()
 	log := slog.New(slog.NewTextHandler(os.Stderr, nil))
-	if len(tk) == 0 {
-		log.Warn("auth disabled: no --tokens given; every caller is 'anonymous'. Fine on localhost, not on a network.")
+	if !tk.Enabled() {
+		log.Warn("auth disabled: no --tokens given; every caller is anonymous with access to all projects. Fine on localhost, not on a network.")
 	}
-	srv := &http.Server{Addr: *addr, Handler: httpapi.Handler(st, tk, log), ReadHeaderTimeout: 10 * time.Second}
+	srv := &http.Server{Addr: *addr, Handler: httpapi.Handler(st, tk, exposed, log), ReadHeaderTimeout: 10 * time.Second}
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer stop()
 	go func() {
@@ -223,7 +259,7 @@ func cmdServe(args []string) error {
 		defer cancel()
 		srv.Shutdown(shutdown)
 	}()
-	log.Info("openmind listening", "addr", *addr, "db", *db, "mcp", "http://"+displayAddr(*addr)+"/mcp", "users", len(tk))
+	log.Info("openmind listening", "addr", *addr, "db", *db, "mcp", "http://"+displayAddr(*addr)+"/mcp", "auth", tk.Enabled())
 	if err := srv.ListenAndServe(); !errors.Is(err, http.ErrServerClosed) {
 		return err
 	}
@@ -237,35 +273,25 @@ func displayAddr(a string) string {
 	return a
 }
 
-func parseTokens(s string) (httpapi.Tokens, error) {
-	tk := httpapi.Tokens{}
-	for _, pair := range strings.Split(s, ",") {
-		pair = strings.TrimSpace(pair)
-		if pair == "" {
-			continue
-		}
-		name, secret, ok := strings.Cut(pair, ":")
-		if !ok || name == "" || len(secret) < 8 {
-			return nil, fmt.Errorf("token %q: want name:secret with a secret of at least 8 characters", pair)
-		}
-		tk[secret] = name
-	}
-	return tk, nil
-}
-
 // ---- mcp (stdio) ----------------------------------------------------------
 
 func cmdMCP(args []string) error {
 	fs := flag.NewFlagSet("mcp", flag.ExitOnError)
 	db := fs.String("db", env("OPENMIND_DB", defaultDB()), "SQLite database path")
 	author := fs.String("author", env("OPENMIND_AUTHOR", os.Getenv("USER")), "author for notes written in this session")
+	project := fs.String("project", os.Getenv("OPENMIND_PROJECT"), "pin the session to this project (default: derived from the current directory)")
+	ns := fs.String("namespace", os.Getenv("OPENMIND_NAMESPACE"), "team prefix for the detected project, e.g. emcd → emcd/<repo>")
 	fs.Parse(args)
+	if *project == "" {
+		*project = withNamespace(*ns, detectProject())
+	}
 	st, err := openStore(*db)
 	if err != nil {
 		return err
 	}
 	defer st.Close()
-	return mcpserver.New(st, *author).Run(context.Background(), &mcp.StdioTransport{})
+	id := auth.Identity{User: *author, Projects: []string{"*"}}
+	return mcpserver.New(st, id, *project).Run(context.Background(), &mcp.StdioTransport{})
 }
 
 // ---- note commands --------------------------------------------------------
@@ -593,22 +619,61 @@ func cmdSetup(args []string) error {
 	server := fs.String("server", os.Getenv("OPENMIND_SERVER"), "remote server URL")
 	token := fs.String("token", os.Getenv("OPENMIND_TOKEN"), "bearer token")
 	db := fs.String("db", env("OPENMIND_DB", defaultDB()), "local database (stdio mode)")
-	scope := fs.String("scope", "user", "claude mcp add scope: user|project|local")
+	scope := fs.String("scope", "local", "claude mcp add scope: local (private, per repository) | project (writes .mcp.json into the repo: never with a token)")
+	project := fs.String("project", "", "project name (default: derived from the current directory)")
+	ns := fs.String("namespace", os.Getenv("OPENMIND_NAMESPACE"), "team prefix, e.g. emcd → emcd/<repo>; pair with grants like emcd/*")
 	fs.Parse(args[1:])
+	if *project == "" {
+		*project = withNamespace(*ns, detectProject())
+	}
+	fmt.Fprintf(os.Stderr, "# run inside the repository; the session will be pinned to project %q\n", *project)
 	if *server != "" {
+		if *token != "" && *scope == "project" {
+			return errors.New("--scope project would write the token into .mcp.json inside the repository; use --scope local")
+		}
 		fmt.Printf("claude mcp add --transport http --scope %s openmind %s/mcp", *scope, strings.TrimRight(*server, "/"))
 		if *token != "" {
 			fmt.Printf(" --header \"Authorization: Bearer %s\"", *token)
 		}
-		fmt.Println()
+		fmt.Printf(" --header \"%s: %s\"\n", httpapi.ProjectHeader, *project)
 		return nil
 	}
 	exe, _ := os.Executable()
-	fmt.Printf("claude mcp add --scope %s openmind -- %s mcp --db %s\n", *scope, exe, *db)
+	fmt.Printf("claude mcp add --scope %s openmind -- %s mcp --db %s --project %s\n", *scope, exe, *db, *project)
 	return nil
 }
 
 // ---- helpers --------------------------------------------------------------
+
+func withNamespace(ns, project string) string {
+	ns = strings.Trim(strings.ToLower(ns), "/")
+	if ns == "" {
+		return project
+	}
+	return ns + "/" + project
+}
+
+// detectProject names the project for the current directory: the last path
+// element of the git remote "origin" without ".git", else the basename of
+// the git top level, else the basename of the working directory.
+func detectProject() string {
+	if out, err := exec.Command("git", "remote", "get-url", "origin").Output(); err == nil {
+		u := strings.TrimSpace(string(out))
+		u = strings.TrimSuffix(u, ".git")
+		u = strings.TrimRight(u, "/")
+		if i := strings.LastIndexAny(u, "/:"); i >= 0 {
+			u = u[i+1:]
+		}
+		if u != "" {
+			return strings.ToLower(u)
+		}
+	}
+	if out, err := exec.Command("git", "rev-parse", "--show-toplevel").Output(); err == nil {
+		return strings.ToLower(filepath.Base(strings.TrimSpace(string(out))))
+	}
+	cwd, _ := os.Getwd()
+	return strings.ToLower(filepath.Base(cwd))
+}
 
 func readAll(f *os.File) (string, error) {
 	var b strings.Builder
@@ -627,8 +692,9 @@ func readAll(f *os.File) (string, error) {
 }
 
 func trunc(s string, n int) string {
-	if len(s) <= n {
+	r := []rune(s)
+	if len(r) <= n {
 		return s
 	}
-	return s[:n-1] + "…"
+	return string(r[:n-1]) + "…"
 }

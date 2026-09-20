@@ -57,8 +57,8 @@ func summary(body string) string {
 		if l == "" || strings.HasPrefix(l, "#") {
 			continue
 		}
-		if len(l) > 200 {
-			l = l[:200] + "…"
+		if r := []rune(l); len(r) > 200 {
+			l = string(r[:200]) + "…"
 		}
 		return l
 	}

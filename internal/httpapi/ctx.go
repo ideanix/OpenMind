@@ -1,7 +1,13 @@
 package httpapi
 
-import "context"
+import (
+	"context"
 
-func contextWithUser(ctx context.Context, user string) context.Context {
-	return context.WithValue(ctx, ctxKey{}, user)
+	"github.com/ideanix/openmind/internal/auth"
+)
+
+func contextWithIdentity(ctx context.Context, id auth.Identity) context.Context {
+	return context.WithValue(ctx, ctxKey{}, id)
 }
+
+type ctxT = context.Context

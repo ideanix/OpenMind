@@ -128,7 +128,7 @@ func (c *Client) Search(ctx context.Context, q string, f store.Filter) ([]store.
 // Context returns the project digest.
 func (c *Client) Context(ctx context.Context, project string) (string, error) {
 	var out string
-	err := c.Do(ctx, "GET", "/api/v1/projects/"+url.PathEscape(project)+"/context", nil, &out)
+	err := c.Do(ctx, "GET", "/api/v1/context?project="+url.QueryEscape(project), nil, &out)
 	return out, err
 }
 

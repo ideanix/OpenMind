@@ -1,6 +1,6 @@
 # OpenMind — Requirements
 
-Status: draft v0.2 · 2026-09-17 · Owner: Evgenii (inerc)
+Status: draft v0.5 · 2026-09-17 · Owner: Evgenii (inerc)
 
 OpenMind is an open-source, self-hosted knowledge layer that lets a team share
 what their AI coding agents have learned. Any agent (Claude Code, Codex, Cursor,
@@ -185,8 +185,37 @@ Never optional.
 - FR-14. Claude Code hooks shipped as a plugin: `SessionStart` pulls
   `openmind_context`; `Stop` reminds the agent to save new learnings.
 
-### 7.4 Access control
+### 7.4 Access control and isolation
 
+- FR-14a. **Session binding.** An agent session is pinned to exactly one
+  project, derived from the repository it runs in (git remote name, else
+  folder name). Over stdio the pin is a server flag; over HTTP it is the
+  `X-OpenMind-Project` header written into the repository's MCP config.
+  A pinned session ignores any project argument and cannot read or write
+  another project, whatever the agent asks for.
+- FR-14b. **Grants.** Every token carries an explicit list of projects
+  (`name:secret:proj1|proj2`, `*` for all, `team/*` for a namespace).
+  A token with no list can access nothing. Teams that must not learn of each
+  other use disjoint namespaces, or, preferably, disjoint instances. Reads, writes, history and project listing are filtered by the
+  grant on the server, not in the client.
+- FR-14c. Local mode without tokens (`openmind mcp`, `serve` with no
+  `--tokens`) is single-user: the anonymous identity has all projects, and
+  isolation comes from session binding alone.
+- FR-14d. **Token store.** Tokens are created with `openmind token add` or
+  `openmind invite`, stored as SHA-256 hashes in a 0600 file, shown once, and
+  picked up by a running server without restart. Revocation is immediate.
+- FR-14e. **No anonymous network access.** A server listening on a
+  non-loopback address refuses to start without tokens and never treats a
+  request as anonymous, even if the token file is emptied while it runs.
+- FR-14f. **Tokens never enter a repository.** Generated client config uses
+  Claude Code's `local` scope; `setup` rejects `--scope project` with a token.
+- FR-14g. **Invite.** One command issues a token and prints the complete
+  onboarding text for another device: connectivity check, MCP registration
+  pinned to the project, optional SessionStart hook. The invited device needs
+  no OpenMind binary.
+- FR-14h. **Service.** `openmind service install|uninstall|status` runs the
+  server under launchd (macOS) from a stable copy of the binary in
+  `~/.openmind/bin`; on Linux it prints a systemd unit.
 - FR-15. Users and teams; bearer tokens per user, scoped per project.
 - FR-16. Roles per project: `reader`, `writer`, `maintainer`. Only
   maintainers can hard-delete, change scopes from personal to team, or edit
@@ -203,10 +232,46 @@ Never optional.
   touches disk.
 - FR-20. Scanner rules are extensible via a config file.
 
+### 7.5a Observability of clients
+
+- FR-20a. **Activity log.** Every MCP tool call, REST call, refused
+  authentication and refused cross-project access is recorded: time, user,
+  project, action, kind (read/write/denied/error), detail, note id, remote
+  address, client agent. Local stdio sessions are recorded too. The log is
+  capped (50k rows) and never blocks the audited operation.
+- FR-20b. **Client view.** Per token holder: grants, online (called within
+  five minutes; HTTP is stateless, so there is no socket to watch), last
+  action, 24-hour read/write/refused counters. Callers without a valid token
+  appear as one row so probing is visible.
+- FR-20c. Admin endpoints and the control desk require the `*` grant.
+
+### 7.5b Agent work
+
+- FR-20d. **Tasks.** A user with a grant on a project queues a task for a
+  named client. States: queued → running → done | failed | cancelled;
+  requeue from any non-queued state. Prompts pass the secret scanner;
+  reports are redacted rather than rejected so a report is never lost.
+- FR-20e. **Worker.** `openmind worker` on the client claims tasks
+  atomically (only its own, only in granted projects), runs a headless
+  coding agent in one directory, heartbeats every 15 s (the reply doubles as
+  the cancel signal), enforces a time limit, and posts a structured report
+  plus the working-tree state.
+- FR-20f. **Worker safety.** Opt-in process owned by the client's user;
+  default permission mode allows file edits inside the directory and refuses
+  shell commands not explicitly allow-listed; the preamble forbids commit,
+  push, deploy and credential access unless the task says so.
+- FR-20g. **Binary distribution.** The server serves its own binary to
+  authenticated clients and announces its platform; the client refuses a
+  mismatch.
+
 ### 7.6 Web UI (minimal, v1)
 
-- FR-21. Read-only browse and search of notes, revision diff view, and a
-  "pending drafts" queue for review. Server-rendered, no JS build step.
+- FR-21. Control desk at `/ui`: one embedded HTML file, no external assets
+  (works offline), strict CSP, token kept in sessionStorage and delivered by
+  URL fragment so it never reaches server logs. Tabs: Desk (clients with
+  60-minute activity lanes, live feed, projects), Tasks (assign, watch,
+  cancel, requeue, read reports), Notes (browse, search, read).
+  Still to do: revision diff view and a "pending drafts" review queue.
 - FR-22. Editing in the UI is a v1.1 feature.
 
 ### 7.7 Optional plugins (v1.1+)
@@ -247,7 +312,10 @@ Server with SQLite/FTS5, MCP over stdio and Streamable HTTP, the six tools,
 bearer tokens mapped to user names, project/personal scopes, secret scanner,
 revision history, REST API, CLI (`put/search/list/get/context/projects`),
 `import claude-code`, `export claude-md`, `setup claude-code`.
-Not in this cut: `init`, two-way `sync`, hooks plugin, web UI, roles.
+Added 2026-09-19: hashed token file with live reload, `token`, `invite`,
+`service`, project pinning, namespace grants, LAN deployment verified.
+Added 2026-09-20: activity log, control desk, task queue, worker, binary
+download. Not in this cut: `init`, two-way `sync`, hooks plugin, roles.
 
 Acceptance (met in a smoke test): two users with different tokens against one
 server; a note written by one is found by the other via MCP search and
@@ -287,6 +355,9 @@ can use. Small notes, not transcripts. Humans stay in the loop.
   before publishing. Candidates: keep as working title, or rename.
 - OQ-2. Should `personal` scope live on the server at all, or stay local-only
   and only `project`/`team` sync?
+  **Decided 2026-09-17:** the unit of sharing is the project (the folder /
+  repository a session runs in), never "everything this user knows". See
+  FR-14a–c. `personal` stays as an extra per-author filter inside a project.
 - OQ-3. How aggressively should `openmind_context` summarize versus list?
   Listing is deterministic; summarizing needs an LLM.
 - OQ-4. Conflict policy for `sync` when both sides edited the same note:
