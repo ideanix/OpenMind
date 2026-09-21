@@ -72,6 +72,10 @@ in front (see below).
 
 ## Control desk
 
+<p align="center">
+  <img src="docs/assets/openmind-control-desk.svg" alt="Illustration of the OpenMind control desk: clients, live activity, projects, and a note with its provenance metadata" width="100%">
+</p>
+
 ```bash
 openmind ui          # opens http://localhost:7777/ui signed in as the owner
 ```
