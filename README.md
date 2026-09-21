@@ -1,5 +1,9 @@
 # OpenMind
 
+<p align="center">
+  <img src="docs/assets/openmind-hero.svg" alt="OpenMind: developers and teams using different AI agents all share one memory" width="100%">
+</p>
+
 Self-hosted shared memory for AI coding agents. Any MCP client (Claude Code,
 Codex, Cursor, Gemini CLI, your own scripts) reads and writes one team
 knowledge base: small, attributable notes instead of lost transcripts.

@@ -1,0 +1,236 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1280 780" width="1280" height="780" role="img" aria-labelledby="t d">
+<title id="t">OpenMind: one shared memory for every developer, team and AI agent</title>
+<desc id="d">Four teams of developers using different AI coding agents all connect to a single central brain, OpenMind, which holds their shared notes.</desc>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#070b1a"/><stop offset="0.55" stop-color="#0c1230"/><stop offset="1" stop-color="#120b2e"/></linearGradient>
+<radialGradient id="halo" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#7c6cff" stop-opacity="0.55"/><stop offset="0.45" stop-color="#3b82f6" stop-opacity="0.18"/><stop offset="1" stop-color="#3b82f6" stop-opacity="0"/></radialGradient>
+<linearGradient id="brainL" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#60a5fa"/><stop offset="1" stop-color="#a78bfa"/></linearGradient>
+<linearGradient id="brainR" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34d399"/><stop offset="1" stop-color="#a78bfa"/></linearGradient>
+<linearGradient id="title" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7dd3fc"/><stop offset="0.5" stop-color="#c4b5fd"/><stop offset="1" stop-color="#6ee7b7"/></linearGradient>
+<radialGradient id="core" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#ffffff"/><stop offset="0.35" stop-color="#ddd6fe"/><stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/></radialGradient>
+<pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="1.2" cy="1.2" r="1.2" fill="#ffffff" fill-opacity="0.055"/></pattern>
+<filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<clipPath id="card"><rect width="1280" height="780" rx="28"/></clipPath>
+<linearGradient id="ln0" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#38bdf8" stop-opacity="0.25"/><stop offset="1" stop-color="#38bdf8" stop-opacity="0.95"/></linearGradient>
+<linearGradient id="ln1" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#a78bfa" stop-opacity="0.25"/><stop offset="1" stop-color="#a78bfa" stop-opacity="0.95"/></linearGradient>
+<linearGradient id="ln2" x1="1" y1="0" x2="0" y2="0"><stop offset="0" stop-color="#34d399" stop-opacity="0.25"/><stop offset="1" stop-color="#34d399" stop-opacity="0.95"/></linearGradient>
+<linearGradient id="ln3" x1="1" y1="0" x2="0" y2="0"><stop offset="0" stop-color="#fbbf24" stop-opacity="0.25"/><stop offset="1" stop-color="#fbbf24" stop-opacity="0.95"/></linearGradient>
+</defs>
+<g clip-path="url(#card)">
+<rect width="1280" height="780" fill="url(#bg)"/><rect width="1280" height="780" fill="url(#dots)"/>
+<circle cx="640" cy="395" r="330" fill="url(#halo)"/>
+<circle cx="640" cy="395" r="150" fill="none" stroke="#c4b5fd" stroke-opacity="0.22" stroke-width="1.2" stroke-dasharray="2 7"/>
+<circle cx="640" cy="395" r="205" fill="none" stroke="#c4b5fd" stroke-opacity="0.14" stroke-width="1.2" stroke-dasharray="1 9"/>
+<circle cx="640" cy="395" r="262" fill="none" stroke="#c4b5fd" stroke-opacity="0.09" stroke-width="1.2" stroke-dasharray="1 12"/>
+<g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif" text-anchor="middle">
+<text x="640" y="78" font-size="52" font-weight="800" letter-spacing="-1.5" fill="url(#title)">OpenMind</text>
+<text x="640" y="116" font-size="21" font-weight="500" fill="#e2e8f0">One shared brain for every developer, every team, every AI agent</text>
+</g>
+<path id="p0" d="M348,249 C498,249 405.1,335.3 535.1,335.3" fill="none" stroke="url(#ln0)" stroke-width="1.8" stroke-linecap="round"/>
+<path id="p1" d="M348,293 C498,293 390.5,357.7 520.5,357.7" fill="none" stroke="url(#ln0)" stroke-width="1.8" stroke-linecap="round"/>
+<path id="p2" d="M348,337 C498,337 383.2,380.5 513.2,380.5" fill="none" stroke="url(#ln0)" stroke-width="1.8" stroke-linecap="round"/>
+<path id="p3" d="M348,499 C498,499 383.2,409.5 513.2,409.5" fill="none" stroke="url(#ln1)" stroke-width="1.8" stroke-linecap="round"/>
+<path id="p4" d="M348,543 C498,543 390.5,432.3 520.5,432.3" fill="none" stroke="url(#ln1)" stroke-width="1.8" stroke-linecap="round"/>
+<path id="p5" d="M348,587 C498,587 405.1,454.7 535.1,454.7" fill="none" stroke="url(#ln1)" stroke-width="1.8" stroke-linecap="round"/>
+<path id="p6" d="M932,249 C782,249 874.9,335.3 744.9,335.3" fill="none" stroke="url(#ln2)" stroke-width="1.8" stroke-linecap="round"/>
+<path id="p7" d="M932,293 C782,293 889.5,357.7 759.5,357.7" fill="none" stroke="url(#ln2)" stroke-width="1.8" stroke-linecap="round"/>
+<path id="p8" d="M932,337 C782,337 896.8,380.5 766.8,380.5" fill="none" stroke="url(#ln2)" stroke-width="1.8" stroke-linecap="round"/>
+<path id="p9" d="M932,499 C782,499 896.8,409.5 766.8,409.5" fill="none" stroke="url(#ln3)" stroke-width="1.8" stroke-linecap="round"/>
+<path id="p10" d="M932,543 C782,543 889.5,432.3 759.5,432.3" fill="none" stroke="url(#ln3)" stroke-width="1.8" stroke-linecap="round"/>
+<path id="p11" d="M932,587 C782,587 874.9,454.7 744.9,454.7" fill="none" stroke="url(#ln3)" stroke-width="1.8" stroke-linecap="round"/>
+<g opacity="0"><rect x="-6" y="-4.5" width="12" height="9" rx="2" fill="#38bdf8" filter="url(#soft)"/><animateMotion dur="3.2s" begin="0.00s" repeatCount="indefinite" rotate="0"><mpath xlink:href="#p0"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.85;1" dur="3.2s" begin="0.00s" repeatCount="indefinite"/></g>
+<g opacity="0"><rect x="-6" y="-4.5" width="12" height="9" rx="2" fill="#38bdf8" filter="url(#soft)"/><animateMotion dur="3.75s" begin="0.47s" repeatCount="indefinite" rotate="0"><mpath xlink:href="#p1"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.85;1" dur="3.75s" begin="0.47s" repeatCount="indefinite"/></g>
+<g opacity="0"><rect x="-6" y="-4.5" width="12" height="9" rx="2" fill="#38bdf8" filter="url(#soft)"/><animateMotion dur="4.300000000000001s" begin="0.94s" repeatCount="indefinite" rotate="0"><mpath xlink:href="#p2"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.85;1" dur="4.300000000000001s" begin="0.94s" repeatCount="indefinite"/></g>
+<g opacity="0"><rect x="-6" y="-4.5" width="12" height="9" rx="2" fill="#a78bfa" filter="url(#soft)"/><animateMotion dur="4.8500000000000005s" begin="1.41s" repeatCount="indefinite" rotate="0"><mpath xlink:href="#p3"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.85;1" dur="4.8500000000000005s" begin="1.41s" repeatCount="indefinite"/></g>
+<g opacity="0"><rect x="-6" y="-4.5" width="12" height="9" rx="2" fill="#a78bfa" filter="url(#soft)"/><animateMotion dur="3.2s" begin="1.88s" repeatCount="indefinite" rotate="0"><mpath xlink:href="#p4"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.85;1" dur="3.2s" begin="1.88s" repeatCount="indefinite"/></g>
+<g opacity="0"><rect x="-6" y="-4.5" width="12" height="9" rx="2" fill="#a78bfa" filter="url(#soft)"/><animateMotion dur="3.75s" begin="2.35s" repeatCount="indefinite" rotate="0"><mpath xlink:href="#p5"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.85;1" dur="3.75s" begin="2.35s" repeatCount="indefinite"/></g>
+<g opacity="0"><rect x="-6" y="-4.5" width="12" height="9" rx="2" fill="#34d399" filter="url(#soft)"/><animateMotion dur="4.300000000000001s" begin="2.82s" repeatCount="indefinite" rotate="0"><mpath xlink:href="#p6"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.85;1" dur="4.300000000000001s" begin="2.82s" repeatCount="indefinite"/></g>
+<g opacity="0"><rect x="-6" y="-4.5" width="12" height="9" rx="2" fill="#34d399" filter="url(#soft)"/><animateMotion dur="4.8500000000000005s" begin="3.29s" repeatCount="indefinite" rotate="0"><mpath xlink:href="#p7"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.85;1" dur="4.8500000000000005s" begin="3.29s" repeatCount="indefinite"/></g>
+<g opacity="0"><rect x="-6" y="-4.5" width="12" height="9" rx="2" fill="#34d399" filter="url(#soft)"/><animateMotion dur="3.2s" begin="0.36s" repeatCount="indefinite" rotate="0"><mpath xlink:href="#p8"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.85;1" dur="3.2s" begin="0.36s" repeatCount="indefinite"/></g>
+<g opacity="0"><rect x="-6" y="-4.5" width="12" height="9" rx="2" fill="#fbbf24" filter="url(#soft)"/><animateMotion dur="3.75s" begin="0.83s" repeatCount="indefinite" rotate="0"><mpath xlink:href="#p9"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.85;1" dur="3.75s" begin="0.83s" repeatCount="indefinite"/></g>
+<g opacity="0"><rect x="-6" y="-4.5" width="12" height="9" rx="2" fill="#fbbf24" filter="url(#soft)"/><animateMotion dur="4.300000000000001s" begin="1.30s" repeatCount="indefinite" rotate="0"><mpath xlink:href="#p10"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.85;1" dur="4.300000000000001s" begin="1.30s" repeatCount="indefinite"/></g>
+<g opacity="0"><rect x="-6" y="-4.5" width="12" height="9" rx="2" fill="#fbbf24" filter="url(#soft)"/><animateMotion dur="4.8500000000000005s" begin="1.77s" repeatCount="indefinite" rotate="0"><mpath xlink:href="#p11"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.85;1" dur="4.8500000000000005s" begin="1.77s" repeatCount="indefinite"/></g>
+<g transform="translate(640,395)">
+<g transform="scale(1,1)">
+<path d="M-7,-100 C-40,-118 -78,-108 -92,-82 C-122,-74 -134,-40 -122,-14 C-140,10 -134,48 -110,62 C-104,92 -66,108 -38,98 C-26,106 -12,102 -7,94 Z" fill="url(#brainL)" fill-opacity="0.16" stroke="url(#brainL)" stroke-width="2.6" stroke-linejoin="round" filter="url(#glow)"/>
+<path d="M-30,-96 C-44,-74 -22,-62 -40,-44 C-58,-28 -34,-12 -52,4 C-70,20 -44,36 -58,54 C-68,68 -50,80 -56,94" fill="none" stroke="url(#brainL)" stroke-opacity="0.75" stroke-width="1.8" stroke-linecap="round"/>
+<path d="M-84,-84 C-98,-62 -74,-50 -92,-30 C-108,-12 -86,0 -100,20 C-112,36 -96,50 -104,62" fill="none" stroke="url(#brainL)" stroke-opacity="0.75" stroke-width="1.8" stroke-linecap="round"/>
+<path d="M-10,-60 C-24,-46 -8,-32 -22,-16 C-34,-2 -12,10 -24,28 C-34,42 -14,54 -20,72" fill="none" stroke="url(#brainL)" stroke-opacity="0.75" stroke-width="1.8" stroke-linecap="round"/>
+<path d="M-122,-14 C-104,-18 -96,-2 -78,-8 C-66,-12 -62,2 -52,4" fill="none" stroke="url(#brainL)" stroke-opacity="0.75" stroke-width="1.8" stroke-linecap="round"/>
+<path d="M-92,-82 C-80,-70 -66,-78 -58,-64" fill="none" stroke="url(#brainL)" stroke-opacity="0.75" stroke-width="1.8" stroke-linecap="round"/>
+</g>
+<g transform="scale(-1,1)">
+<path d="M-7,-100 C-40,-118 -78,-108 -92,-82 C-122,-74 -134,-40 -122,-14 C-140,10 -134,48 -110,62 C-104,92 -66,108 -38,98 C-26,106 -12,102 -7,94 Z" fill="url(#brainR)" fill-opacity="0.16" stroke="url(#brainR)" stroke-width="2.6" stroke-linejoin="round" filter="url(#glow)"/>
+<path d="M-30,-96 C-44,-74 -22,-62 -40,-44 C-58,-28 -34,-12 -52,4 C-70,20 -44,36 -58,54 C-68,68 -50,80 -56,94" fill="none" stroke="url(#brainR)" stroke-opacity="0.75" stroke-width="1.8" stroke-linecap="round"/>
+<path d="M-84,-84 C-98,-62 -74,-50 -92,-30 C-108,-12 -86,0 -100,20 C-112,36 -96,50 -104,62" fill="none" stroke="url(#brainR)" stroke-opacity="0.75" stroke-width="1.8" stroke-linecap="round"/>
+<path d="M-10,-60 C-24,-46 -8,-32 -22,-16 C-34,-2 -12,10 -24,28 C-34,42 -14,54 -20,72" fill="none" stroke="url(#brainR)" stroke-opacity="0.75" stroke-width="1.8" stroke-linecap="round"/>
+<path d="M-122,-14 C-104,-18 -96,-2 -78,-8 C-66,-12 -62,2 -52,4" fill="none" stroke="url(#brainR)" stroke-opacity="0.75" stroke-width="1.8" stroke-linecap="round"/>
+<path d="M-92,-82 C-80,-70 -66,-78 -58,-64" fill="none" stroke="url(#brainR)" stroke-opacity="0.75" stroke-width="1.8" stroke-linecap="round"/>
+</g>
+<line x1="-62" y1="-40" x2="0" y2="0" stroke="#ffffff" stroke-opacity="0.34" stroke-width="1"/>
+<line x1="-70" y1="30" x2="0" y2="0" stroke="#ffffff" stroke-opacity="0.34" stroke-width="1"/>
+<line x1="-30" y1="70" x2="0" y2="0" stroke="#ffffff" stroke-opacity="0.34" stroke-width="1"/>
+<line x1="-34" y1="-72" x2="0" y2="0" stroke="#ffffff" stroke-opacity="0.34" stroke-width="1"/>
+<line x1="62" y1="-40" x2="0" y2="0" stroke="#ffffff" stroke-opacity="0.34" stroke-width="1"/>
+<line x1="70" y1="30" x2="0" y2="0" stroke="#ffffff" stroke-opacity="0.34" stroke-width="1"/>
+<line x1="30" y1="70" x2="0" y2="0" stroke="#ffffff" stroke-opacity="0.34" stroke-width="1"/>
+<line x1="34" y1="-72" x2="0" y2="0" stroke="#ffffff" stroke-opacity="0.34" stroke-width="1"/>
+<line x1="-62" y1="-40" x2="-34" y2="-72" stroke="#ffffff" stroke-opacity="0.34" stroke-width="1"/>
+<line x1="-62" y1="-40" x2="-70" y2="30" stroke="#ffffff" stroke-opacity="0.34" stroke-width="1"/>
+<line x1="-70" y1="30" x2="-30" y2="70" stroke="#ffffff" stroke-opacity="0.34" stroke-width="1"/>
+<line x1="62" y1="-40" x2="34" y2="-72" stroke="#ffffff" stroke-opacity="0.34" stroke-width="1"/>
+<line x1="62" y1="-40" x2="70" y2="30" stroke="#ffffff" stroke-opacity="0.34" stroke-width="1"/>
+<line x1="70" y1="30" x2="30" y2="70" stroke="#ffffff" stroke-opacity="0.34" stroke-width="1"/>
+<line x1="-34" y1="-72" x2="34" y2="-72" stroke="#ffffff" stroke-opacity="0.34" stroke-width="1"/>
+<line x1="-30" y1="70" x2="30" y2="70" stroke="#ffffff" stroke-opacity="0.34" stroke-width="1"/>
+<circle cx="-62" cy="-40" r="3.2" fill="#f8fafc" filter="url(#soft)"/>
+<circle cx="-70" cy="30" r="3.2" fill="#f8fafc" filter="url(#soft)"/>
+<circle cx="-30" cy="70" r="3.2" fill="#f8fafc" filter="url(#soft)"/>
+<circle cx="-34" cy="-72" r="3.2" fill="#f8fafc" filter="url(#soft)"/>
+<circle cx="62" cy="-40" r="3.2" fill="#f8fafc" filter="url(#soft)"/>
+<circle cx="70" cy="30" r="3.2" fill="#f8fafc" filter="url(#soft)"/>
+<circle cx="30" cy="70" r="3.2" fill="#f8fafc" filter="url(#soft)"/>
+<circle cx="34" cy="-72" r="3.2" fill="#f8fafc" filter="url(#soft)"/>
+<circle r="30" fill="url(#core)"><animate attributeName="r" values="26;34;26" dur="3.6s" repeatCount="indefinite"/></circle>
+<circle r="6.5" fill="#ffffff" filter="url(#glow)"/>
+</g>
+<circle cx="535.1" cy="335.3" r="5" fill="#38bdf8" stroke="#0b1020" stroke-width="1.5" filter="url(#soft)"/>
+<circle cx="520.5" cy="357.7" r="5" fill="#38bdf8" stroke="#0b1020" stroke-width="1.5" filter="url(#soft)"/>
+<circle cx="513.2" cy="380.5" r="5" fill="#38bdf8" stroke="#0b1020" stroke-width="1.5" filter="url(#soft)"/>
+<circle cx="513.2" cy="409.5" r="5" fill="#a78bfa" stroke="#0b1020" stroke-width="1.5" filter="url(#soft)"/>
+<circle cx="520.5" cy="432.3" r="5" fill="#a78bfa" stroke="#0b1020" stroke-width="1.5" filter="url(#soft)"/>
+<circle cx="535.1" cy="454.7" r="5" fill="#a78bfa" stroke="#0b1020" stroke-width="1.5" filter="url(#soft)"/>
+<circle cx="744.9" cy="335.3" r="5" fill="#34d399" stroke="#0b1020" stroke-width="1.5" filter="url(#soft)"/>
+<circle cx="759.5" cy="357.7" r="5" fill="#34d399" stroke="#0b1020" stroke-width="1.5" filter="url(#soft)"/>
+<circle cx="766.8" cy="380.5" r="5" fill="#34d399" stroke="#0b1020" stroke-width="1.5" filter="url(#soft)"/>
+<circle cx="766.8" cy="409.5" r="5" fill="#fbbf24" stroke="#0b1020" stroke-width="1.5" filter="url(#soft)"/>
+<circle cx="759.5" cy="432.3" r="5" fill="#fbbf24" stroke="#0b1020" stroke-width="1.5" filter="url(#soft)"/>
+<circle cx="744.9" cy="454.7" r="5" fill="#fbbf24" stroke="#0b1020" stroke-width="1.5" filter="url(#soft)"/>
+<g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif" text-anchor="middle"><text x="640" y="545" font-size="15" font-weight="700" letter-spacing="3" fill="#c4b5fd">ONE SOURCE OF TRUTH</text><text x="640" y="569" font-size="14" fill="#94a3b8">notes · decisions · gotchas · history</text></g>
+<g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">
+<rect x="48" y="170" width="300" height="196" rx="18" fill="#0f172a" fill-opacity="0.78" stroke="#38bdf8" stroke-opacity="0.45" stroke-width="1.4"/>
+<rect x="48" y="170" width="300" height="196" rx="18" fill="#38bdf8" fill-opacity="0.05"/>
+<circle cx="72" cy="200" r="5.5" fill="#38bdf8" filter="url(#soft)"/>
+<text x="88" y="206" font-size="17" font-weight="700" fill="#f1f5f9">Backend team</text>
+<line x1="66" y1="222" x2="330" y2="222" stroke="#ffffff" stroke-opacity="0.08"/>
+<rect x="62" y="232" width="272" height="34" rx="10" fill="#ffffff" fill-opacity="0.045"/>
+<circle cx="82" cy="249" r="12" fill="#38bdf8" fill-opacity="0.18" stroke="#38bdf8" stroke-opacity="0.8" stroke-width="1.2"/>
+<circle cx="82" cy="245.5" r="3.6" fill="#38bdf8"/><path d="M75.5,256.5 a6.5,6 0 0 1 13,0 z" fill="#38bdf8"/>
+<text x="104" y="254" font-size="14.5" font-weight="600" fill="#e2e8f0">alice</text>
+<rect x="214.9" y="238" width="109.1" height="22" rx="11" fill="#38bdf8" fill-opacity="0.14" stroke="#38bdf8" stroke-opacity="0.35"/>
+<text x="269.45" y="253.5" font-size="12.5" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" fill="#38bdf8">Claude Code</text>
+<circle cx="348" cy="249" r="3.5" fill="#0b1020" stroke="#38bdf8" stroke-width="1.6"/>
+<rect x="62" y="276" width="272" height="34" rx="10" fill="#ffffff" fill-opacity="0.045"/>
+<circle cx="82" cy="293" r="12" fill="#38bdf8" fill-opacity="0.18" stroke="#38bdf8" stroke-opacity="0.8" stroke-width="1.2"/>
+<circle cx="82" cy="289.5" r="3.6" fill="#38bdf8"/><path d="M75.5,300.5 a6.5,6 0 0 1 13,0 z" fill="#38bdf8"/>
+<text x="104" y="298" font-size="14.5" font-weight="600" fill="#e2e8f0">bob</text>
+<rect x="263.5" y="282" width="60.5" height="22" rx="11" fill="#38bdf8" fill-opacity="0.14" stroke="#38bdf8" stroke-opacity="0.35"/>
+<text x="293.75" y="297.5" font-size="12.5" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" fill="#38bdf8">Codex</text>
+<circle cx="348" cy="293" r="3.5" fill="#0b1020" stroke="#38bdf8" stroke-width="1.6"/>
+<rect x="62" y="320" width="272" height="34" rx="10" fill="#ffffff" fill-opacity="0.045"/>
+<circle cx="82" cy="337" r="12" fill="#38bdf8" fill-opacity="0.18" stroke="#38bdf8" stroke-opacity="0.8" stroke-width="1.2"/>
+<circle cx="82" cy="333.5" r="3.6" fill="#38bdf8"/><path d="M75.5,344.5 a6.5,6 0 0 1 13,0 z" fill="#38bdf8"/>
+<text x="104" y="342" font-size="14.5" font-weight="600" fill="#e2e8f0">carol</text>
+<rect x="255.4" y="326" width="68.6" height="22" rx="11" fill="#38bdf8" fill-opacity="0.14" stroke="#38bdf8" stroke-opacity="0.35"/>
+<text x="289.7" y="341.5" font-size="12.5" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" fill="#38bdf8">Cursor</text>
+<circle cx="348" cy="337" r="3.5" fill="#0b1020" stroke="#38bdf8" stroke-width="1.6"/>
+</g>
+<g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">
+<rect x="48" y="420" width="300" height="196" rx="18" fill="#0f172a" fill-opacity="0.78" stroke="#a78bfa" stroke-opacity="0.45" stroke-width="1.4"/>
+<rect x="48" y="420" width="300" height="196" rx="18" fill="#a78bfa" fill-opacity="0.05"/>
+<circle cx="72" cy="450" r="5.5" fill="#a78bfa" filter="url(#soft)"/>
+<text x="88" y="456" font-size="17" font-weight="700" fill="#f1f5f9">Mobile team</text>
+<line x1="66" y1="472" x2="330" y2="472" stroke="#ffffff" stroke-opacity="0.08"/>
+<rect x="62" y="482" width="272" height="34" rx="10" fill="#ffffff" fill-opacity="0.045"/>
+<circle cx="82" cy="499" r="12" fill="#a78bfa" fill-opacity="0.18" stroke="#a78bfa" stroke-opacity="0.8" stroke-width="1.2"/>
+<circle cx="82" cy="495.5" r="3.6" fill="#a78bfa"/><path d="M75.5,506.5 a6.5,6 0 0 1 13,0 z" fill="#a78bfa"/>
+<text x="104" y="504" font-size="14.5" font-weight="600" fill="#e2e8f0">dan</text>
+<rect x="255.4" y="488" width="68.6" height="22" rx="11" fill="#a78bfa" fill-opacity="0.14" stroke="#a78bfa" stroke-opacity="0.35"/>
+<text x="289.7" y="503.5" font-size="12.5" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" fill="#a78bfa">Cursor</text>
+<circle cx="348" cy="499" r="3.5" fill="#0b1020" stroke="#a78bfa" stroke-width="1.6"/>
+<rect x="62" y="526" width="272" height="34" rx="10" fill="#ffffff" fill-opacity="0.045"/>
+<circle cx="82" cy="543" r="12" fill="#a78bfa" fill-opacity="0.18" stroke="#a78bfa" stroke-opacity="0.8" stroke-width="1.2"/>
+<circle cx="82" cy="539.5" r="3.6" fill="#a78bfa"/><path d="M75.5,550.5 a6.5,6 0 0 1 13,0 z" fill="#a78bfa"/>
+<text x="104" y="548" font-size="14.5" font-weight="600" fill="#e2e8f0">erin</text>
+<rect x="223.0" y="532" width="101.0" height="22" rx="11" fill="#a78bfa" fill-opacity="0.14" stroke="#a78bfa" stroke-opacity="0.35"/>
+<text x="273.5" y="547.5" font-size="12.5" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" fill="#a78bfa">Gemini CLI</text>
+<circle cx="348" cy="543" r="3.5" fill="#0b1020" stroke="#a78bfa" stroke-width="1.6"/>
+<rect x="62" y="570" width="272" height="34" rx="10" fill="#ffffff" fill-opacity="0.045"/>
+<circle cx="82" cy="587" r="12" fill="#a78bfa" fill-opacity="0.18" stroke="#a78bfa" stroke-opacity="0.8" stroke-width="1.2"/>
+<circle cx="82" cy="583.5" r="3.6" fill="#a78bfa"/><path d="M75.5,594.5 a6.5,6 0 0 1 13,0 z" fill="#a78bfa"/>
+<text x="104" y="592" font-size="14.5" font-weight="600" fill="#e2e8f0">frank</text>
+<rect x="214.9" y="576" width="109.1" height="22" rx="11" fill="#a78bfa" fill-opacity="0.14" stroke="#a78bfa" stroke-opacity="0.35"/>
+<text x="269.45" y="591.5" font-size="12.5" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" fill="#a78bfa">Claude Code</text>
+<circle cx="348" cy="587" r="3.5" fill="#0b1020" stroke="#a78bfa" stroke-width="1.6"/>
+</g>
+<g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">
+<rect x="932" y="170" width="300" height="196" rx="18" fill="#0f172a" fill-opacity="0.78" stroke="#34d399" stroke-opacity="0.45" stroke-width="1.4"/>
+<rect x="932" y="170" width="300" height="196" rx="18" fill="#34d399" fill-opacity="0.05"/>
+<circle cx="956" cy="200" r="5.5" fill="#34d399" filter="url(#soft)"/>
+<text x="972" y="206" font-size="17" font-weight="700" fill="#f1f5f9">Data team</text>
+<line x1="950" y1="222" x2="1214" y2="222" stroke="#ffffff" stroke-opacity="0.08"/>
+<rect x="946" y="232" width="272" height="34" rx="10" fill="#ffffff" fill-opacity="0.045"/>
+<circle cx="966" cy="249" r="12" fill="#34d399" fill-opacity="0.18" stroke="#34d399" stroke-opacity="0.8" stroke-width="1.2"/>
+<circle cx="966" cy="245.5" r="3.6" fill="#34d399"/><path d="M959.5,256.5 a6.5,6 0 0 1 13,0 z" fill="#34d399"/>
+<text x="988" y="254" font-size="14.5" font-weight="600" fill="#e2e8f0">grace</text>
+<rect x="1098.9" y="238" width="109.1" height="22" rx="11" fill="#34d399" fill-opacity="0.14" stroke="#34d399" stroke-opacity="0.35"/>
+<text x="1153.45" y="253.5" font-size="12.5" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" fill="#34d399">Claude Code</text>
+<circle cx="932" cy="249" r="3.5" fill="#0b1020" stroke="#34d399" stroke-width="1.6"/>
+<rect x="946" y="276" width="272" height="34" rx="10" fill="#ffffff" fill-opacity="0.045"/>
+<circle cx="966" cy="293" r="12" fill="#34d399" fill-opacity="0.18" stroke="#34d399" stroke-opacity="0.8" stroke-width="1.2"/>
+<circle cx="966" cy="289.5" r="3.6" fill="#34d399"/><path d="M959.5,300.5 a6.5,6 0 0 1 13,0 z" fill="#34d399"/>
+<text x="988" y="298" font-size="14.5" font-weight="600" fill="#e2e8f0">heidi</text>
+<rect x="1131.3" y="282" width="76.69999999999999" height="22" rx="11" fill="#34d399" fill-opacity="0.14" stroke="#34d399" stroke-opacity="0.35"/>
+<text x="1169.6499999999999" y="297.5" font-size="12.5" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" fill="#34d399">scripts</text>
+<circle cx="932" cy="293" r="3.5" fill="#0b1020" stroke="#34d399" stroke-width="1.6"/>
+<rect x="946" y="320" width="272" height="34" rx="10" fill="#ffffff" fill-opacity="0.045"/>
+<circle cx="966" cy="337" r="12" fill="#34d399" fill-opacity="0.18" stroke="#34d399" stroke-opacity="0.8" stroke-width="1.2"/>
+<circle cx="966" cy="333.5" r="3.6" fill="#34d399"/><path d="M959.5,344.5 a6.5,6 0 0 1 13,0 z" fill="#34d399"/>
+<text x="988" y="342" font-size="14.5" font-weight="600" fill="#e2e8f0">ivan</text>
+<rect x="1147.5" y="326" width="60.5" height="22" rx="11" fill="#34d399" fill-opacity="0.14" stroke="#34d399" stroke-opacity="0.35"/>
+<text x="1177.75" y="341.5" font-size="12.5" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" fill="#34d399">Codex</text>
+<circle cx="932" cy="337" r="3.5" fill="#0b1020" stroke="#34d399" stroke-width="1.6"/>
+</g>
+<g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">
+<rect x="932" y="420" width="300" height="196" rx="18" fill="#0f172a" fill-opacity="0.78" stroke="#fbbf24" stroke-opacity="0.45" stroke-width="1.4"/>
+<rect x="932" y="420" width="300" height="196" rx="18" fill="#fbbf24" fill-opacity="0.05"/>
+<circle cx="956" cy="450" r="5.5" fill="#fbbf24" filter="url(#soft)"/>
+<text x="972" y="456" font-size="17" font-weight="700" fill="#f1f5f9">Platform team</text>
+<line x1="950" y1="472" x2="1214" y2="472" stroke="#ffffff" stroke-opacity="0.08"/>
+<rect x="946" y="482" width="272" height="34" rx="10" fill="#ffffff" fill-opacity="0.045"/>
+<circle cx="966" cy="499" r="12" fill="#fbbf24" fill-opacity="0.18" stroke="#fbbf24" stroke-opacity="0.8" stroke-width="1.2"/>
+<circle cx="966" cy="495.5" r="3.6" fill="#fbbf24"/><path d="M959.5,506.5 a6.5,6 0 0 1 13,0 z" fill="#fbbf24"/>
+<text x="988" y="504" font-size="14.5" font-weight="600" fill="#e2e8f0">judy</text>
+<rect x="1107.0" y="488" width="101.0" height="22" rx="11" fill="#fbbf24" fill-opacity="0.14" stroke="#fbbf24" stroke-opacity="0.35"/>
+<text x="1157.5" y="503.5" font-size="12.5" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" fill="#fbbf24">Gemini CLI</text>
+<circle cx="932" cy="499" r="3.5" fill="#0b1020" stroke="#fbbf24" stroke-width="1.6"/>
+<rect x="946" y="526" width="272" height="34" rx="10" fill="#ffffff" fill-opacity="0.045"/>
+<circle cx="966" cy="543" r="12" fill="#fbbf24" fill-opacity="0.18" stroke="#fbbf24" stroke-opacity="0.8" stroke-width="1.2"/>
+<circle cx="966" cy="539.5" r="3.6" fill="#fbbf24"/><path d="M959.5,550.5 a6.5,6 0 0 1 13,0 z" fill="#fbbf24"/>
+<text x="988" y="548" font-size="14.5" font-weight="600" fill="#e2e8f0">mallory</text>
+<rect x="1139.4" y="532" width="68.6" height="22" rx="11" fill="#fbbf24" fill-opacity="0.14" stroke="#fbbf24" stroke-opacity="0.35"/>
+<text x="1173.7" y="547.5" font-size="12.5" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" fill="#fbbf24">Cursor</text>
+<circle cx="932" cy="543" r="3.5" fill="#0b1020" stroke="#fbbf24" stroke-width="1.6"/>
+<rect x="946" y="570" width="272" height="34" rx="10" fill="#ffffff" fill-opacity="0.045"/>
+<circle cx="966" cy="587" r="12" fill="#fbbf24" fill-opacity="0.18" stroke="#fbbf24" stroke-opacity="0.8" stroke-width="1.2"/>
+<circle cx="966" cy="583.5" r="3.6" fill="#fbbf24"/><path d="M959.5,594.5 a6.5,6 0 0 1 13,0 z" fill="#fbbf24"/>
+<text x="988" y="592" font-size="14.5" font-weight="600" fill="#e2e8f0">niaj</text>
+<rect x="1098.9" y="576" width="109.1" height="22" rx="11" fill="#fbbf24" fill-opacity="0.14" stroke="#fbbf24" stroke-opacity="0.35"/>
+<text x="1153.45" y="591.5" font-size="12.5" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" fill="#fbbf24">Claude Code</text>
+<circle cx="932" cy="587" r="3.5" fill="#0b1020" stroke="#fbbf24" stroke-width="1.6"/>
+</g>
+<g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif"><rect x="117.0" y="690" width="318" height="50" rx="25" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.14"/>
+<circle cx="144.0" cy="715" r="14" fill="url(#title)"/><text x="144.0" y="720.5" font-size="15" font-weight="800" text-anchor="middle" fill="#0b1020">1</text>
+<text x="169.0" y="720.5" font-size="15.5" font-weight="500" fill="#e2e8f0">An agent learns something</text></g>
+<path d="M443.0,715 h28 m-7,-6 l7,6 l-7,6" fill="none" stroke="#c4b5fd" stroke-opacity="0.8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif"><rect x="481.0" y="690" width="318" height="50" rx="25" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.14"/>
+<circle cx="508.0" cy="715" r="14" fill="url(#title)"/><text x="508.0" y="720.5" font-size="15" font-weight="800" text-anchor="middle" fill="#0b1020">2</text>
+<text x="533.0" y="720.5" font-size="15.5" font-weight="500" fill="#e2e8f0">It saves a small, attributed note</text></g>
+<path d="M807.0,715 h28 m-7,-6 l7,6 l-7,6" fill="none" stroke="#c4b5fd" stroke-opacity="0.8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif"><rect x="845.0" y="690" width="318" height="50" rx="25" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.14"/>
+<circle cx="872.0" cy="715" r="14" fill="url(#title)"/><text x="872.0" y="720.5" font-size="15" font-weight="800" text-anchor="middle" fill="#0b1020">3</text>
+<text x="897.0" y="720.5" font-size="15.5" font-weight="500" fill="#e2e8f0">Every other agent starts with it</text></g>
+</g>
+<rect x="0.75" y="0.75" width="1278.5" height="778.5" rx="27.5" fill="none" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1.5"/>
+</svg>
